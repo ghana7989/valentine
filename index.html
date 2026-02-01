@@ -9,23 +9,28 @@
 			rel="stylesheet"
 		/>
 		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			user-select: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💕</text></svg>') 16 16, auto;
+		}
 
-			body {
-				min-height: 100vh;
-				background: linear-gradient(
-					135deg,
-					#ffeef8 0%,
-					#fff0f5 50%,
-					#ffe4ec 100%
-				);
-				font-family: 'Poppins', sans-serif;
-				overflow-x: hidden;
-			}
+		body {
+			min-height: 100vh;
+			background: linear-gradient(
+				135deg,
+				#ffeef8 0%,
+				#fff0f5 50%,
+				#ffe4ec 100%
+			);
+			font-family: 'Poppins', sans-serif;
+			overflow-x: hidden;
+		}
 
 			/* Floating Hearts Background */
 			.hearts-container {
@@ -103,13 +108,14 @@
 				margin-bottom: 40px;
 			}
 
-			.scroll-hint {
-				position: absolute;
-				bottom: 30px;
-				animation: bounce 2s infinite;
-				color: #e75480;
-				font-size: 2rem;
-			}
+		.scroll-hint {
+			position: absolute;
+			bottom: 30px;
+			animation: bounce 2s infinite;
+			color: #e75480;
+			font-size: 2rem;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
+		}
 
 			@keyframes bounce {
 				0%,
@@ -203,7 +209,7 @@
 			font-weight: 600;
 			border: none;
 			border-radius: 50px;
-			cursor: pointer;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 			transition: all 0.3s ease;
 			font-family: 'Poppins', sans-serif;
 		}
@@ -416,7 +422,7 @@
 			justify-content: center;
 			position: relative;
 			overflow: hidden;
-			cursor: pointer;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 		}
 
 		.meter-fill {
@@ -450,7 +456,7 @@
 			color: white;
 			border: none;
 			border-radius: 50px;
-			cursor: pointer;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 			box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
 			transition: all 0.3s ease;
 		}
@@ -499,7 +505,7 @@
 			border-radius: 20px;
 			padding: 30px;
 			box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-			cursor: pointer;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 			transition: all 0.4s ease;
 			min-height: 200px;
 			display: flex;
@@ -537,120 +543,6 @@
 			color: #b76e79;
 			font-size: 1rem;
 			line-height: 1.6;
-		}
-
-		/* Timeline Section */
-		.timeline-section {
-			display: none;
-			min-height: 100vh;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 60px 20px;
-			position: relative;
-			z-index: 1;
-		}
-
-		.timeline-section.show {
-			display: flex;
-			animation: fadeIn 1s ease;
-		}
-
-		.timeline-section h2 {
-			font-family: 'Dancing Script', cursive;
-			font-size: 3.5rem;
-			color: #e75480;
-			margin-bottom: 50px;
-		}
-
-		.timeline {
-			max-width: 800px;
-			width: 100%;
-			position: relative;
-			margin-bottom: 40px;
-		}
-
-		.timeline::before {
-			content: '';
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 4px;
-			height: 100%;
-			background: linear-gradient(180deg, #ff69b4, #ff1493);
-			border-radius: 2px;
-		}
-
-		.timeline-item {
-			margin-bottom: 50px;
-			position: relative;
-			opacity: 0;
-			animation: slideIn 0.6s ease forwards;
-		}
-
-		.timeline-item:nth-child(1) { animation-delay: 0.2s; }
-		.timeline-item:nth-child(2) { animation-delay: 0.4s; }
-		.timeline-item:nth-child(3) { animation-delay: 0.6s; }
-		.timeline-item:nth-child(4) { animation-delay: 0.8s; }
-
-		@keyframes slideIn {
-			from {
-				opacity: 0;
-				transform: translateY(30px);
-			}
-			to {
-				opacity: 1;
-				transform: translateY(0);
-			}
-		}
-
-		.timeline-item:nth-child(odd) .timeline-content {
-			margin-left: 0;
-			margin-right: auto;
-			padding-right: 50%;
-		}
-
-		.timeline-item:nth-child(even) .timeline-content {
-			margin-left: auto;
-			margin-right: 0;
-			padding-left: 50%;
-			text-align: right;
-		}
-
-		.timeline-content {
-			background: white;
-			padding: 25px;
-			border-radius: 15px;
-			box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-			position: relative;
-		}
-
-		.timeline-date {
-			color: #ff1493;
-			font-weight: 600;
-			font-size: 1.1rem;
-			margin-bottom: 10px;
-		}
-
-		.timeline-text {
-			color: #b76e79;
-			line-height: 1.6;
-		}
-
-		.timeline-icon {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 50px;
-			height: 50px;
-			background: linear-gradient(135deg, #ff69b4, #ff1493);
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			font-size: 1.5rem;
-			box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
-			top: 20px;
 		}
 
 		/* Date Ideas Section */
@@ -697,7 +589,7 @@
 			border-radius: 20px;
 			overflow: hidden;
 			box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
-			cursor: pointer;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 			transition: all 0.3s ease;
 		}
 
@@ -737,7 +629,6 @@
 			.question-section h2,
 			.love-meter-section h2,
 			.reasons-section h2,
-			.timeline-section h2,
 			.date-ideas-section h2 {
 				font-size: 2.2rem;
 			}
@@ -750,18 +641,6 @@
 			}
 			.reasons-grid {
 				grid-template-columns: 1fr;
-			}
-			.timeline::before {
-				left: 30px;
-			}
-			.timeline-item:nth-child(odd) .timeline-content,
-			.timeline-item:nth-child(even) .timeline-content {
-				padding-left: 80px;
-				padding-right: 20px;
-				text-align: left;
-			}
-			.timeline-icon {
-				left: 30px;
 			}
 			.date-cards-container {
 				grid-template-columns: 1fr;
@@ -783,8 +662,10 @@
 		<section class="hero">
 			<h1>Hey Beautiful 💕</h1>
 			<p>
-				I have something really important to ask you... Something I've been
-				thinking about for a while now. Are you ready? 🥺
+				We've been talking for a while now, and even though we're miles apart,
+				you're always on my mind... I have something really important to ask you. 
+				Are you ready? 🥺<br/><br/>
+				<em>- Pavan</em>
 			</p>
 			<div class="scroll-hint">👇</div>
 		</section>
@@ -793,6 +674,9 @@
 		<section class="question-section" id="questionSection">
 			<div class="cute-image">💝</div>
 			<h2>Will You Be My Valentine?</h2>
+			<p style="font-size: 1.1rem; color: #b76e79; margin-bottom: 30px; max-width: 500px;">
+				Distance means nothing when you mean everything to me 💕
+			</p>
 			<div class="buttons-container">
 				<button class="btn btn-yes" id="yesBtn">Yes! 💖</button>
 				<button class="btn btn-no" id="noBtn">No 😢</button>
@@ -802,7 +686,7 @@
 		<!-- Success Section -->
 		<section class="success-section" id="successSection">
 			<h2>Yaaaay! 🎉💕</h2>
-			<p>I knew you'd say yes! You just made me the happiest person ever!</p>
+			<p>I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕</p>
 			<div class="gif-container">
 				<div
 					class="tenor-gif-embed"
@@ -827,7 +711,7 @@
 		<!-- Love Meter Section -->
 		<section class="love-meter-section" id="loveMeterSection">
 			<h2>Love Meter 💕</h2>
-			<p>Tap the meter to see how much I love you!</p>
+			<p>Tap the meter to see how much I love you!<br/>- Pavan</p>
 			<div class="meter-container" id="meterContainer" onclick="fillMeter()">
 				<div class="meter-fill" id="meterFill"></div>
 				<div class="meter-percentage" id="meterPercentage">0%</div>
@@ -842,68 +726,32 @@
 				<div class="reason-card">
 					<div class="icon">😊</div>
 					<h3>Your Smile</h3>
-					<p>It lights up my entire world and makes every day brighter</p>
+					<p>Even through a screen, it lights up my entire world. Can't wait to see it in person</p>
 				</div>
 				<div class="reason-card">
 					<div class="icon">💭</div>
-					<h3>Your Mind</h3>
-					<p>Our conversations are my favorite part of the day</p>
+					<h3>Our Connection</h3>
+					<p>Our late-night conversations are my favorite part of the day</p>
 				</div>
 				<div class="reason-card">
 					<div class="icon">❤️</div>
 					<h3>Your Heart</h3>
-					<p>Your kindness and compassion inspire me every day</p>
+					<p>The way you care makes me want to hold you and never let go</p>
 				</div>
 				<div class="reason-card">
 					<div class="icon">✨</div>
-					<h3>Your Spirit</h3>
-					<p>You make everything more fun and magical</p>
+					<h3>The Chemistry</h3>
+					<p>Even from far away, I can feel the spark between us</p>
 				</div>
 				<div class="reason-card">
-					<div class="icon">🌟</div>
-					<h3>Your Uniqueness</h3>
-					<p>There's nobody else in the world like you</p>
+					<div class="icon">🌙</div>
+					<h3>How You Make Me Feel</h3>
+					<p>You make my heart race in ways I can't explain</p>
 				</div>
 				<div class="reason-card">
 					<div class="icon">🎵</div>
 					<h3>Your Laugh</h3>
-					<p>It's the most beautiful sound I've ever heard</p>
-				</div>
-			</div>
-			<button class="continue-btn" onclick="showTimeline()">Keep Going 💖</button>
-		</section>
-
-		<!-- Timeline Section -->
-		<section class="timeline-section" id="timelineSection">
-			<h2>Our Journey 💫</h2>
-			<div class="timeline">
-				<div class="timeline-item">
-					<div class="timeline-icon">✨</div>
-					<div class="timeline-content">
-						<div class="timeline-date">The Beginning</div>
-						<div class="timeline-text">The moment I first saw you, I knew you were special</div>
-					</div>
-				</div>
-				<div class="timeline-item">
-					<div class="timeline-icon">💭</div>
-					<div class="timeline-content">
-						<div class="timeline-date">Getting to Know You</div>
-						<div class="timeline-text">Every conversation made me fall for you a little more</div>
-					</div>
-				</div>
-				<div class="timeline-item">
-					<div class="timeline-icon">💕</div>
-					<div class="timeline-content">
-						<div class="timeline-date">Falling in Love</div>
-						<div class="timeline-text">I realized you're the one I want to share everything with</div>
-					</div>
-				</div>
-				<div class="timeline-item">
-					<div class="timeline-icon">🌈</div>
-					<div class="timeline-content">
-						<div class="timeline-date">Our Future</div>
-						<div class="timeline-text">Creating beautiful memories together, one day at a time</div>
-					</div>
+					<p>I dream about hearing it in person, feeling you laugh in my arms</p>
 				</div>
 			</div>
 			<button class="continue-btn" onclick="showDateIdeas()">What's Next? 💖</button>
@@ -911,49 +759,49 @@
 
 		<!-- Date Ideas Section -->
 		<section class="date-ideas-section" id="dateIdeasSection">
-			<h2>Our Future Adventures 🌟</h2>
-			<p>All the amazing things we'll do together!</p>
+			<h2>When We Finally Meet 🌟</h2>
+			<p>All the things I'm dreaming about doing with you...<br/>Love, Pavan 💕</p>
 			<div class="date-cards-container">
 				<div class="date-card">
-					<div class="date-card-header">🍿</div>
+					<div class="date-card-header">🫂</div>
 					<div class="date-card-body">
-						<h3>Movie Night</h3>
-						<p>Cozy up together with popcorn and your favorite films</p>
+						<h3>Our First Hug</h3>
+						<p>Finally holding you close and not wanting to let go</p>
 					</div>
 				</div>
 				<div class="date-card">
-					<div class="date-card-header">🍕</div>
+					<div class="date-card-header">🍿</div>
 					<div class="date-card-body">
-						<h3>Food Adventures</h3>
-						<p>Try every restaurant in town and find our favorite spot</p>
+						<h3>Cuddle & Chill</h3>
+						<p>Getting cozy together, your head on my chest while we watch movies</p>
 					</div>
 				</div>
 				<div class="date-card">
 					<div class="date-card-header">🌅</div>
 					<div class="date-card-body">
-						<h3>Sunset Watching</h3>
-						<p>Find the perfect spot to watch the sky paint masterpieces</p>
+						<h3>Sunset Moments</h3>
+						<p>Wrapped in each other's arms, stealing kisses as the sun sets</p>
 					</div>
 				</div>
 				<div class="date-card">
-					<div class="date-card-header">🎮</div>
+					<div class="date-card-header">🍕</div>
 					<div class="date-card-body">
-						<h3>Game Nights</h3>
-						<p>Compete, cooperate, and laugh until our stomachs hurt</p>
+						<h3>Late Night Dates</h3>
+						<p>Long dinners that turn into longer nights together</p>
 					</div>
 				</div>
 				<div class="date-card">
-					<div class="date-card-header">🌳</div>
+					<div class="date-card-header">🌙</div>
 					<div class="date-card-body">
-						<h3>Nature Walks</h3>
-						<p>Explore beautiful trails and breathe in fresh air together</p>
+						<h3>Lazy Mornings</h3>
+						<p>Waking up next to you, tangled up and not wanting to move</p>
 					</div>
 				</div>
 				<div class="date-card">
-					<div class="date-card-header">🎨</div>
+					<div class="date-card-header">💋</div>
 					<div class="date-card-body">
-						<h3>Creative Days</h3>
-						<p>Paint, craft, cook, and create memories together</p>
+						<h3>Making Up For Lost Time</h3>
+						<p>All the touches, kisses, and closeness we've been missing</p>
 					</div>
 				</div>
 			</div>
@@ -1124,16 +972,9 @@
 			document.getElementById('reasonsSection').scrollIntoView({ behavior: 'smooth' })
 		}
 
-		// Timeline Section
-		function showTimeline() {
-			document.getElementById('reasonsSection').style.display = 'none'
-			document.getElementById('timelineSection').classList.add('show')
-			document.getElementById('timelineSection').scrollIntoView({ behavior: 'smooth' })
-		}
-
 		// Date Ideas Section
 		function showDateIdeas() {
-			document.getElementById('timelineSection').style.display = 'none'
+			document.getElementById('reasonsSection').style.display = 'none'
 			document.getElementById('dateIdeasSection').classList.add('show')
 			document.getElementById('dateIdeasSection').scrollIntoView({ behavior: 'smooth' })
 		}
