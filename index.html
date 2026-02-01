@@ -905,7 +905,7 @@
 
 		<!-- Hero Section -->
 		<section class="hero">
-			<h1 id="heroTitle">Hey Beautiful 💕</h1>
+			<h1>Hey Beautiful 💕</h1>
 			<p>
 				We've been talking for a while now, and even though we're miles apart,
 				you're always on my mind... I have something really important to ask you. 
@@ -1101,28 +1101,41 @@
 		</section>
 
 	<script>
-		// Get name from URL query parameter
-		function getRecipientName() {
+		// Get sender name from URL query parameter
+		function getSenderName() {
 			const urlParams = new URLSearchParams(window.location.search)
 			const name = urlParams.get('name')
-			return name ? name.trim() : null
+			return name ? name.trim() : 'Pavan'
 		}
 
-		// Personalize content based on recipient name
+		// Personalize content based on sender name
 		function personalizeContent() {
-			const name = getRecipientName()
+			const senderName = getSenderName()
 			
-			if (name) {
-				// Update hero title
-				document.getElementById('heroTitle').textContent = `Hey ${name} 💕`
-				
-				// Update success message
-				document.getElementById('successMessage').innerHTML = 
-					`I knew you'd say yes, ${name}! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕`
-				
-				// Update love meter text
-				document.getElementById('loveMeterText').innerHTML = 
-					`Tap the meter to see how much I love you, ${name}!<br/>- Pavan`
+			// Update all instances of the sender's name
+			const heroSignature = document.querySelector('.hero em')
+			if (heroSignature) {
+				heroSignature.textContent = `- ${senderName}`
+			}
+			
+			// Update success message
+			document.getElementById('successMessage').innerHTML = 
+				`I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- ${senderName} 💕`
+			
+			// Update love meter text
+			document.getElementById('loveMeterText').innerHTML = 
+				`Tap the meter to see how much I love you!<br/>- ${senderName}`
+			
+			// Update date ideas signature
+			const dateIdeasText = document.querySelector('.date-ideas-section > p')
+			if (dateIdeasText) {
+				dateIdeasText.innerHTML = `Things we gotta do...<br/>- ${senderName} 💕`
+			}
+			
+			// Update final section signature
+			const finalSignature = document.querySelector('.signature')
+			if (finalSignature) {
+				finalSignature.innerHTML = `Waiting for you,<br/>${senderName} 💕`
 			}
 		}
 
