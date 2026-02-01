@@ -909,8 +909,7 @@
 			<p>
 				We've been talking for a while now, and even though we're miles apart,
 				you're always on my mind... I have something really important to ask you. 
-				Are you ready? 🥺<br/><br/>
-				<em>- Pavan</em>
+				Are you ready? 🥺
 			</p>
 			<div class="scroll-hint">👇</div>
 		</section>
@@ -931,7 +930,7 @@
 		<!-- Success Section -->
 		<section class="success-section" id="successSection">
 			<h2>Yaaaay! 🎉💕</h2>
-			<p id="successMessage">I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕</p>
+			<p id="successMessage">I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever! 💕</p>
 			<div class="gif-container">
 				<div
 					class="tenor-gif-embed"
@@ -956,7 +955,7 @@
 		<!-- Love Meter Section -->
 		<section class="love-meter-section" id="loveMeterSection">
 			<h2>Love Meter 💕</h2>
-			<p id="loveMeterText">Tap the meter to see how much I love you!<br/>- Pavan</p>
+			<p id="loveMeterText">Tap the meter to see how much I love you!</p>
 			<div class="meter-container" id="meterContainer" onclick="fillMeter()">
 				<div class="meter-fill" id="meterFill"></div>
 				<div class="meter-percentage" id="meterPercentage">0%</div>
@@ -1005,7 +1004,7 @@
 		<!-- Date Ideas Section -->
 		<section class="date-ideas-section" id="dateIdeasSection">
 			<h2>When We Finally Meet 🌟</h2>
-			<p>Things we gotta do...<br/>- Pavan 💕</p>
+			<p>Things we gotta do... 💕</p>
 			<div class="date-cards-container">
 				<div class="date-card">
 					<div class="date-card-header">🍕</div>
@@ -1090,8 +1089,7 @@
 				</div>
 
 				<div class="signature">
-					Waiting for you,<br/>
-					Pavan 💕
+					Waiting for you... 💕
 				</div>
 
 				<div class="final-hearts">
@@ -1105,37 +1103,65 @@
 		function getSenderName() {
 			const urlParams = new URLSearchParams(window.location.search)
 			const name = urlParams.get('name')
-			return name ? name.trim() : 'Pavan'
+			return name ? name.trim() : null
 		}
 
 		// Personalize content based on sender name
 		function personalizeContent() {
 			const senderName = getSenderName()
 			
-			// Update all instances of the sender's name
-			const heroSignature = document.querySelector('.hero em')
-			if (heroSignature) {
-				heroSignature.textContent = `- ${senderName}`
-			}
-			
-			// Update success message
-			document.getElementById('successMessage').innerHTML = 
-				`I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- ${senderName} 💕`
-			
-			// Update love meter text
-			document.getElementById('loveMeterText').innerHTML = 
-				`Tap the meter to see how much I love you!<br/>- ${senderName}`
-			
-			// Update date ideas signature
-			const dateIdeasText = document.querySelector('.date-ideas-section > p')
-			if (dateIdeasText) {
-				dateIdeasText.innerHTML = `Things we gotta do...<br/>- ${senderName} 💕`
-			}
-			
-			// Update final section signature
-			const finalSignature = document.querySelector('.signature')
-			if (finalSignature) {
-				finalSignature.innerHTML = `Waiting for you,<br/>${senderName} 💕`
+			if (senderName) {
+				// Add signature to hero section
+				const heroPara = document.querySelector('.hero p')
+				if (heroPara && !document.querySelector('.hero em')) {
+					const signature = document.createElement('em')
+					signature.textContent = `- ${senderName}`
+					heroPara.appendChild(document.createElement('br'))
+					heroPara.appendChild(document.createElement('br'))
+					heroPara.appendChild(signature)
+				}
+				
+				// Update success message
+				document.getElementById('successMessage').innerHTML = 
+					`I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- ${senderName} 💕`
+				
+				// Update love meter text
+				document.getElementById('loveMeterText').innerHTML = 
+					`Tap the meter to see how much I love you!<br/>- ${senderName}`
+				
+				// Update date ideas signature
+				const dateIdeasText = document.querySelector('.date-ideas-section > p')
+				if (dateIdeasText) {
+					dateIdeasText.innerHTML = `Things we gotta do...<br/>- ${senderName} 💕`
+				}
+				
+				// Update final section signature
+				const finalSignature = document.querySelector('.signature')
+				if (finalSignature) {
+					finalSignature.innerHTML = `Waiting for you,<br/>${senderName} 💕`
+				}
+			} else {
+				// No name provided - make it generic (no signatures to add)
+				
+				// Update success message (no signature)
+				document.getElementById('successMessage').innerHTML = 
+					`I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever! 💕`
+				
+				// Update love meter text (no signature)
+				document.getElementById('loveMeterText').innerHTML = 
+					`Tap the meter to see how much I love you!`
+				
+				// Update date ideas signature (no signature)
+				const dateIdeasText = document.querySelector('.date-ideas-section > p')
+				if (dateIdeasText) {
+					dateIdeasText.innerHTML = `Things we gotta do... 💕`
+				}
+				
+				// Update final section signature (generic)
+				const finalSignature = document.querySelector('.signature')
+				if (finalSignature) {
+					finalSignature.innerHTML = `Waiting for you... 💕`
+				}
 			}
 		}
 
