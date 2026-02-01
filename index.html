@@ -582,6 +582,7 @@
 			gap: 30px;
 			max-width: 1200px;
 			width: 100%;
+			margin-bottom: 50px;
 		}
 
 		.date-card {
@@ -621,6 +622,155 @@
 			line-height: 1.6;
 		}
 
+		/* Final Section */
+		.final-section {
+			display: none;
+			min-height: 100vh;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 60px 20px;
+			position: relative;
+			z-index: 1;
+			background: linear-gradient(
+				180deg,
+				rgba(255, 182, 193, 0.2) 0%,
+				rgba(255, 105, 180, 0.4) 100%
+			);
+		}
+
+		.final-section.show {
+			display: flex;
+			animation: fadeIn 1s ease;
+		}
+
+		.final-message-container {
+			max-width: 700px;
+			text-align: center;
+			position: relative;
+		}
+
+		.final-message-container h2 {
+			font-family: 'Dancing Script', cursive;
+			font-size: 4rem;
+			color: #e75480;
+			margin-bottom: 30px;
+			animation: pulse 2s ease-in-out infinite;
+		}
+
+		.final-text {
+			font-size: 1.4rem;
+			line-height: 2;
+			color: #b76e79;
+			margin-bottom: 30px;
+		}
+
+		.final-text strong {
+			color: #ff1493;
+			font-weight: 600;
+		}
+
+		.final-text em {
+			font-style: italic;
+			color: #e75480;
+		}
+
+		.reveal-box {
+			background: white;
+			padding: 40px;
+			border-radius: 20px;
+			box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+			margin: 40px 0;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.reveal-box:hover {
+			transform: scale(1.02);
+			box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4);
+		}
+
+		.reveal-box::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), transparent);
+			transition: left 0.5s ease;
+		}
+
+		.reveal-box:hover::before {
+			left: 100%;
+		}
+
+		.reveal-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.reveal-content p {
+			font-size: 1.5rem;
+			line-height: 1.8;
+			color: #e75480;
+			font-weight: 500;
+		}
+
+		.signature {
+			margin-top: 50px;
+			font-family: 'Dancing Script', cursive;
+			font-size: 2.5rem;
+			color: #ff1493;
+		}
+
+		.final-hearts {
+			margin-top: 30px;
+			font-size: 2rem;
+			animation: heartbeat 1.5s ease-in-out infinite;
+		}
+
+		/* Music Player */
+		.music-toggle {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(135deg, #ff69b4, #ff1493);
+			border-radius: 50%;
+			border: none;
+			color: white;
+			font-size: 1.5rem;
+			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
+			box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+			z-index: 1000;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.music-toggle:hover {
+			transform: scale(1.1);
+			box-shadow: 0 12px 35px rgba(255, 20, 147, 0.6);
+		}
+
+		.music-toggle.playing {
+			animation: musicPulse 1s ease infinite;
+		}
+
+		@keyframes musicPulse {
+			0%, 100% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.05);
+			}
+		}
+
 		/* Responsive */
 		@media (max-width: 768px) {
 			.hero h1 {
@@ -629,7 +779,8 @@
 			.question-section h2,
 			.love-meter-section h2,
 			.reasons-section h2,
-			.date-ideas-section h2 {
+			.date-ideas-section h2,
+			.final-message-container h2 {
 				font-size: 2.2rem;
 			}
 			.success-section h2 {
@@ -645,10 +796,32 @@
 			.date-cards-container {
 				grid-template-columns: 1fr;
 			}
+			.music-toggle {
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				font-size: 1.3rem;
+			}
+			.final-text {
+				font-size: 1.1rem;
+			}
+			.reveal-box p {
+				font-size: 1.2rem;
+			}
+			.signature {
+				font-size: 2rem;
+			}
 		}
 		</style>
 	</head>
 	<body>
+		<!-- Background Music -->
+		<audio id="bgMusic" loop autoplay>
+			<source src="lana.mp3" type="audio/mpeg">
+		</audio>
+		<button class="music-toggle" id="musicToggle" title="Toggle Music">🎵</button>
+
 		<!-- Floating Hearts -->
 		<div class="hearts-container" id="heartsContainer"></div>
 
@@ -760,49 +933,93 @@
 		<!-- Date Ideas Section -->
 		<section class="date-ideas-section" id="dateIdeasSection">
 			<h2>When We Finally Meet 🌟</h2>
-			<p>All the things I'm dreaming about doing with you...<br/>Love, Pavan 💕</p>
+			<p>Things we gotta do...<br/>- Pavan 💕</p>
 			<div class="date-cards-container">
 				<div class="date-card">
-					<div class="date-card-header">🫂</div>
+					<div class="date-card-header">🍕</div>
 					<div class="date-card-body">
-						<h3>Our First Hug</h3>
-						<p>Finally holding you close and not wanting to let go</p>
+						<h3>Food Adventures</h3>
+						<p>Try all the restaurants and argue about which one's the best</p>
 					</div>
 				</div>
 				<div class="date-card">
 					<div class="date-card-header">🍿</div>
 					<div class="date-card-body">
-						<h3>Cuddle & Chill</h3>
-						<p>Getting cozy together, your head on my chest while we watch movies</p>
+						<h3>Movie Marathon</h3>
+						<p>Binge-watch everything while sharing popcorn and stealing glances</p>
+					</div>
+				</div>
+				<div class="date-card">
+					<div class="date-card-header">🎮</div>
+					<div class="date-card-body">
+						<h3>Game Night</h3>
+						<p>See who's actually better at games (spoiler: it's me 😏)</p>
+					</div>
+				</div>
+				<div class="date-card">
+					<div class="date-card-header">🌃</div>
+					<div class="date-card-body">
+						<h3>Late Night Drives</h3>
+						<p>Random drives with good music and even better company</p>
+					</div>
+				</div>
+				<div class="date-card">
+					<div class="date-card-header">☕</div>
+					<div class="date-card-body">
+						<h3>Coffee Dates</h3>
+						<p>Talk for hours about everything and nothing at all</p>
 					</div>
 				</div>
 				<div class="date-card">
 					<div class="date-card-header">🌅</div>
 					<div class="date-card-body">
-						<h3>Sunset Moments</h3>
-						<p>Wrapped in each other's arms, stealing kisses as the sun sets</p>
+						<h3>Sunset Chasing</h3>
+						<p>Find cool spots and vibe together as the day ends</p>
 					</div>
 				</div>
-				<div class="date-card">
-					<div class="date-card-header">🍕</div>
-					<div class="date-card-body">
-						<h3>Late Night Dates</h3>
-						<p>Long dinners that turn into longer nights together</p>
+			</div>
+			<button class="continue-btn" onclick="showFinalSection()">One More Thing... 💕</button>
+		</section>
+
+		<!-- Final Section -->
+		<section class="final-section" id="finalSection">
+			<div class="final-message-container">
+				<h2>So Here's The Thing... 💭</h2>
+				
+				<div class="final-text">
+					I know we're just <strong>internet friends</strong> right now,<br/>
+					separated by screens and distance...<br/><br/>
+					But every time we talk, every laugh we share,<br/>
+					every late night conversation that goes on for hours...<br/><br/>
+					<em>It makes me want you more.</em>
+				</div>
+
+				<div class="reveal-box">
+					<div class="reveal-content">
+						<p>
+							I think about the day we finally meet.<br/>
+							The way you'll look at me in person.<br/>
+							How it'll feel to finally touch you, kiss you,<br/>
+							and show you exactly how I feel.<br/><br/>
+							<strong>And trust me, I've got plans. 😏</strong>
+						</p>
 					</div>
 				</div>
-				<div class="date-card">
-					<div class="date-card-header">🌙</div>
-					<div class="date-card-body">
-						<h3>Lazy Mornings</h3>
-						<p>Waking up next to you, tangled up and not wanting to move</p>
-					</div>
+
+				<div class="final-text">
+					So yeah, be my Valentine.<br/>
+					But also know that <strong>this is just the beginning</strong>.<br/><br/>
+					One day soon, we won't just be talking through screens.<br/>
+					<em>And when that day comes... 🔥</em>
 				</div>
-				<div class="date-card">
-					<div class="date-card-header">💋</div>
-					<div class="date-card-body">
-						<h3>Making Up For Lost Time</h3>
-						<p>All the touches, kisses, and closeness we've been missing</p>
-					</div>
+
+				<div class="signature">
+					Waiting for you,<br/>
+					Pavan 💕
+				</div>
+
+				<div class="final-hearts">
+					💕 💖 💗 💘 💝
 				</div>
 			</div>
 		</section>
@@ -979,10 +1196,60 @@
 			document.getElementById('dateIdeasSection').scrollIntoView({ behavior: 'smooth' })
 		}
 
+		// Final Section
+		function showFinalSection() {
+			document.getElementById('dateIdeasSection').style.display = 'none'
+			document.getElementById('finalSection').classList.add('show')
+			document.getElementById('finalSection').scrollIntoView({ behavior: 'smooth' })
+		}
+
+		// Background Music Control
+		const bgMusic = document.getElementById('bgMusic')
+		const musicToggle = document.getElementById('musicToggle')
+		let isPlaying = true
+		
+		// Set initial volume and button state
+		bgMusic.volume = 0.3
+		musicToggle.textContent = '🔊'
+		musicToggle.classList.add('playing')
+
+		// Try to autoplay
+		bgMusic.play().then(() => {
+			// Successfully autoplaying
+			isPlaying = true
+		}).catch(() => {
+			// If autoplay fails, try again on first user interaction
+			musicToggle.textContent = '🎵'
+			musicToggle.classList.remove('playing')
+			isPlaying = false
+			document.addEventListener('click', () => {
+				if (!isPlaying) {
+					bgMusic.play().catch(e => console.log('Audio play failed:', e))
+					musicToggle.textContent = '🔊'
+					musicToggle.classList.add('playing')
+					isPlaying = true
+				}
+			}, { once: true })
+		})
+
+		musicToggle.addEventListener('click', () => {
+			if (isPlaying) {
+				bgMusic.pause()
+				musicToggle.textContent = '🎵'
+				musicToggle.classList.remove('playing')
+				isPlaying = false
+			} else {
+				bgMusic.play().catch(e => console.log('Audio play failed:', e))
+				musicToggle.textContent = '🔊'
+				musicToggle.classList.add('playing')
+				isPlaying = true
+			}
+		})
+
 		// Smooth Scroll
 		document.querySelector('.scroll-hint').addEventListener('click', () => {
 			questionSection.scrollIntoView({ behavior: 'smooth' })
 		})
-		</script>
+	</script>
 	</body>
 </html>
