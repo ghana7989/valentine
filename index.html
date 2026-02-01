@@ -1168,14 +1168,6 @@
 		// Personalize on page load
 		personalizeContent()
 
-		// Set video playback speed to 2x
-		document.addEventListener('DOMContentLoaded', () => {
-			const video = document.querySelector('.video-background')
-			if (video) {
-				video.playbackRate = 2.0
-			}
-		})
-
 		// Floating Hearts
 		function createFloatingHearts() {
 				const container = document.getElementById('heartsContainer')
@@ -1354,10 +1346,9 @@
 			finalSection.classList.add('show')
 			finalSection.scrollIntoView({ behavior: 'smooth' })
 			
-			// Ensure video plays at 2x speed
+			// Ensure video plays
 			const video = finalSection.querySelector('.video-background')
 			if (video) {
-				video.playbackRate = 2.0
 				video.play().catch(e => console.log('Video autoplay failed:', e))
 			}
 		}
