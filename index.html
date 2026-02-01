@@ -632,11 +632,8 @@
 			padding: 60px 20px;
 			position: relative;
 			z-index: 1;
-			background: linear-gradient(
-				180deg,
-				rgba(255, 182, 193, 0.2) 0%,
-				rgba(255, 105, 180, 0.4) 100%
-			);
+			background: #000;
+			overflow: hidden;
 		}
 
 		.final-section.show {
@@ -644,52 +641,103 @@
 			animation: fadeIn 1s ease;
 		}
 
+		.video-background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0.7;
+			z-index: 0;
+		}
+
+		.video-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(
+				180deg,
+				rgba(139, 0, 69, 0.4) 0%,
+				rgba(75, 0, 50, 0.6) 50%,
+				rgba(30, 0, 30, 0.7) 100%
+			);
+			z-index: 1;
+		}
+
 		.final-message-container {
 			max-width: 700px;
 			text-align: center;
 			position: relative;
+			z-index: 2;
+			background: rgba(0, 0, 0, 0.4);
+			backdrop-filter: blur(15px);
+			padding: 40px;
+			border-radius: 30px;
+			box-shadow: 0 10px 50px rgba(255, 105, 180, 0.3),
+			            0 0 100px rgba(255, 20, 147, 0.2);
+			border: 1px solid rgba(255, 105, 180, 0.3);
 		}
 
 		.final-message-container h2 {
 			font-family: 'Dancing Script', cursive;
 			font-size: 4rem;
-			color: #e75480;
+			color: #ffb6d9;
 			margin-bottom: 30px;
 			animation: pulse 2s ease-in-out infinite;
+			text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 
+			             0 0 40px rgba(255, 20, 147, 0.5),
+			             2px 2px 4px rgba(0, 0, 0, 0.5);
 		}
 
 		.final-text {
 			font-size: 1.4rem;
 			line-height: 2;
-			color: #b76e79;
+			color: #f5d0e0;
 			margin-bottom: 30px;
+			text-shadow: 0 0 10px rgba(255, 105, 180, 0.5),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
+			font-weight: 400;
 		}
 
 		.final-text strong {
-			color: #ff1493;
-			font-weight: 600;
+			color: #ff69b4;
+			font-weight: 700;
+			text-shadow: 0 0 15px rgba(255, 105, 180, 0.8),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
 		}
 
 		.final-text em {
 			font-style: italic;
-			color: #e75480;
+			color: #ffb6d9;
+			font-weight: 500;
+			text-shadow: 0 0 15px rgba(255, 105, 180, 0.8),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
 		}
 
 		.reveal-box {
-			background: white;
+			background: rgba(0, 0, 0, 0.6);
+			backdrop-filter: blur(20px);
 			padding: 40px;
 			border-radius: 20px;
-			box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+			box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4),
+			            0 0 80px rgba(255, 20, 147, 0.3);
 			margin: 40px 0;
 			cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="24" font-size="24">💖</text></svg>') 16 16, pointer;
 			transition: all 0.3s ease;
 			position: relative;
 			overflow: hidden;
+			border: 2px solid rgba(255, 105, 180, 0.5);
 		}
 
 		.reveal-box:hover {
 			transform: scale(1.02);
-			box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4);
+			box-shadow: 0 25px 70px rgba(255, 105, 180, 0.6),
+			            0 0 100px rgba(255, 20, 147, 0.5);
+			background: rgba(0, 0, 0, 0.7);
+			border-color: rgba(255, 105, 180, 0.8);
 		}
 
 		.reveal-box::before {
@@ -699,7 +747,7 @@
 			left: -100%;
 			width: 100%;
 			height: 100%;
-			background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.3), transparent);
+			background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.4), transparent);
 			transition: left 0.5s ease;
 		}
 
@@ -715,21 +763,35 @@
 		.reveal-content p {
 			font-size: 1.5rem;
 			line-height: 1.8;
-			color: #e75480;
+			color: #ffc9e0;
 			font-weight: 500;
+			text-shadow: 0 0 10px rgba(255, 105, 180, 0.5),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
+		}
+
+		.reveal-content p strong {
+			color: #ff69b4;
+			font-weight: 700;
+			text-shadow: 0 0 15px rgba(255, 105, 180, 0.8),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
 		}
 
 		.signature {
 			margin-top: 50px;
 			font-family: 'Dancing Script', cursive;
 			font-size: 2.5rem;
-			color: #ff1493;
+			color: #ffb6d9;
+			font-weight: 700;
+			text-shadow: 0 0 20px rgba(255, 105, 180, 0.8),
+			             0 0 40px rgba(255, 20, 147, 0.5),
+			             2px 2px 4px rgba(0, 0, 0, 0.7);
 		}
 
 		.final-hearts {
 			margin-top: 30px;
 			font-size: 2rem;
 			animation: heartbeat 1.5s ease-in-out infinite;
+			filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));
 		}
 
 		/* Music Player */
@@ -812,6 +874,16 @@
 			.signature {
 				font-size: 2rem;
 			}
+			.video-background {
+				opacity: 0.5;
+			}
+			.final-message-container {
+				padding: 30px 20px;
+				background: rgba(0, 0, 0, 0.6);
+			}
+			.final-message-container h2 {
+				font-size: 2.5rem;
+			}
 		}
 		</style>
 	</head>
@@ -833,7 +905,7 @@
 
 		<!-- Hero Section -->
 		<section class="hero">
-			<h1>Hey Beautiful 💕</h1>
+			<h1 id="heroTitle">Hey Beautiful 💕</h1>
 			<p>
 				We've been talking for a while now, and even though we're miles apart,
 				you're always on my mind... I have something really important to ask you. 
@@ -859,7 +931,7 @@
 		<!-- Success Section -->
 		<section class="success-section" id="successSection">
 			<h2>Yaaaay! 🎉💕</h2>
-			<p>I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕</p>
+			<p id="successMessage">I knew you'd say yes! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕</p>
 			<div class="gif-container">
 				<div
 					class="tenor-gif-embed"
@@ -884,7 +956,7 @@
 		<!-- Love Meter Section -->
 		<section class="love-meter-section" id="loveMeterSection">
 			<h2>Love Meter 💕</h2>
-			<p>Tap the meter to see how much I love you!<br/>- Pavan</p>
+			<p id="loveMeterText">Tap the meter to see how much I love you!<br/>- Pavan</p>
 			<div class="meter-container" id="meterContainer" onclick="fillMeter()">
 				<div class="meter-fill" id="meterFill"></div>
 				<div class="meter-percentage" id="meterPercentage">0%</div>
@@ -983,6 +1055,10 @@
 
 		<!-- Final Section -->
 		<section class="final-section" id="finalSection">
+			<video class="video-background" autoplay loop muted playsinline>
+				<source src="video.mp4" type="video/mp4">
+			</video>
+			<div class="video-overlay"></div>
 			<div class="final-message-container">
 				<h2>So Here's The Thing... 💭</h2>
 				
@@ -1024,9 +1100,45 @@
 			</div>
 		</section>
 
-		<script>
-			// Floating Hearts
-			function createFloatingHearts() {
+	<script>
+		// Get name from URL query parameter
+		function getRecipientName() {
+			const urlParams = new URLSearchParams(window.location.search)
+			const name = urlParams.get('name')
+			return name ? name.trim() : null
+		}
+
+		// Personalize content based on recipient name
+		function personalizeContent() {
+			const name = getRecipientName()
+			
+			if (name) {
+				// Update hero title
+				document.getElementById('heroTitle').textContent = `Hey ${name} 💕`
+				
+				// Update success message
+				document.getElementById('successMessage').innerHTML = 
+					`I knew you'd say yes, ${name}! Now I can't wait for the day we finally meet...<br/>You just made me the happiest person ever!<br/>- Pavan 💕`
+				
+				// Update love meter text
+				document.getElementById('loveMeterText').innerHTML = 
+					`Tap the meter to see how much I love you, ${name}!<br/>- Pavan`
+			}
+		}
+
+		// Personalize on page load
+		personalizeContent()
+
+		// Set video playback speed to 2x
+		document.addEventListener('DOMContentLoaded', () => {
+			const video = document.querySelector('.video-background')
+			if (video) {
+				video.playbackRate = 2.0
+			}
+		})
+
+		// Floating Hearts
+		function createFloatingHearts() {
 				const container = document.getElementById('heartsContainer')
 				const hearts = ['💕', '💖', '💗', '💝', '💘', '❤️', '💓', '💞']
 
@@ -1199,8 +1311,16 @@
 		// Final Section
 		function showFinalSection() {
 			document.getElementById('dateIdeasSection').style.display = 'none'
-			document.getElementById('finalSection').classList.add('show')
-			document.getElementById('finalSection').scrollIntoView({ behavior: 'smooth' })
+			const finalSection = document.getElementById('finalSection')
+			finalSection.classList.add('show')
+			finalSection.scrollIntoView({ behavior: 'smooth' })
+			
+			// Ensure video plays at 2x speed
+			const video = finalSection.querySelector('.video-background')
+			if (video) {
+				video.playbackRate = 2.0
+				video.play().catch(e => console.log('Video autoplay failed:', e))
+			}
 		}
 
 		// Background Music Control
